@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="16" width="16">
+  <defs>
+    <rect id="rect-0" opacity="1" x="0" y="0" width="16" height="16"/>
+    <path id="path-1" opacity="1" d="M1,1 L15,1 C15.551915024494,1 16,1.4480849755060001 16,2 C16,2.551915024494 15.551915024494,3 15,3 L1,3 C0.448084975506,3 0,2.551915024494 0,2 C0,1.4480849755060001 0.448084975506,1 1,1Z"/>
+    <path id="path-2" opacity="1" d="M1,7 L15,7 C15.551915024494,7 16,7.448084975506 16,8 C16,8.551915024494 15.551915024494,9 15,9 L1,9 C0.448084975506,9 0,8.551915024494 0,8 C0,7.448084975506 0.448084975506,7 1,7Z"/>
+    <path id="path-3" opacity="1" d="M1,13 L7,13 C7.551915024494,13 8,13.448084975506 8,14 C8,14.551915024494 7.551915024494,15 7,15 L1,15 C0.448084975506,15 0,14.551915024494 0,14 C0,13.448084975506 0.448084975506,13 1,13Z"/>
+  </defs>
+  <g opacity="1">
+    <g opacity="1"/>
+    <g opacity="1">
+      <use xlink:href="#path-1" fill="rgb(71,117,242)" fill-opacity="1"/>
+    </g>
+    <g opacity="1">
+      <use xlink:href="#path-2" fill="rgb(71,117,242)" fill-opacity="1"/>
+    </g>
+    <g opacity="1">
+      <use xlink:href="#path-3" fill="rgb(71,117,242)" fill-opacity="0.49"/>
+    </g>
+  </g>
+</svg>
