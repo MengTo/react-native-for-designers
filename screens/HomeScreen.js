@@ -178,9 +178,9 @@ class HomeScreen extends React.Component {
                           >
                             <Card
                               title={card.title}
-                              image={card.image}
+                              image={{ uri: card.image.url }}
                               caption={card.caption}
-                              logo={card.logo}
+                              logo={{ uri: card.logo.url }}
                               subtitle={card.subtitle}
                               content={card.content}
                             />
