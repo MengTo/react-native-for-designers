@@ -1,21 +1,53 @@
 import React from "react";
 import styled from "styled-components";
+import { Dimensions } from "react-native";
 
-const Course = props => (
-  <Container>
-    <Cover>
-      <Image source={props.image} />
-      <Logo source={props.logo} resizeMode="contain" />
-      <Subtitle>{props.subtitle}</Subtitle>
-      <Title>{props.title}</Title>
-    </Cover>
-    <Content>
-      <Avatar source={props.avatar} />
-      <Caption>{props.caption}</Caption>
-      <Author>Taught by {props.author}</Author>
-    </Content>
-  </Container>
-);
+const screenWidth = Dimensions.get("window").width;
+
+function getCourseWidth(screenWidth) {
+  var cardWidth = screenWidth - 40;
+  if (screenWidth >= 768) {
+    cardWidth = (screenWidth - 60) / 2;
+  }
+  if (screenWidth >= 1024) {
+    cardWidth = (screenWidth - 80) / 3;
+  }
+  return cardWidth;
+}
+
+class Course extends React.Component {
+  state = {
+    cardWidth: getCourseWidth(screenWidth)
+  };
+
+  componentDidMount() {
+    Dimensions.addEventListener("change", this.adaptLayout);
+  }
+
+  adaptLayout = dimensions => {
+    this.setState({
+      cardWidth: getCourseWidth(dimensions.window.width)
+    });
+  };
+
+  render() {
+    return (
+      <Container style={{ width: this.state.cardWidth }}>
+        <Cover>
+          <Image source={this.props.image} />
+          <Logo source={this.props.logo} resizeMode="contain" />
+          <Subtitle>{this.props.subtitle}</Subtitle>
+          <Title>{this.props.title}</Title>
+        </Cover>
+        <Content>
+          <Avatar source={this.props.avatar} />
+          <Caption>{this.props.caption}</Caption>
+          <Author>Taught by {this.props.author}</Author>
+        </Content>
+      </Container>
+    );
+  }
+}
 
 export default Course;
 
@@ -23,7 +55,7 @@ const Container = styled.View`
   width: 335px;
   height: 335px;
   background: white;
-  margin: 10px 20px;
+  margin: 10px 10px;
   border-radius: 14px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 `;

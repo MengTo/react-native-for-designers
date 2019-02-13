@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Card = props => (
-  <Container>
+  <Container style={{ elevation: 10 }}>
     <Cover>
       <Image source={props.image} />
       <Title>{props.title}</Title>
@@ -11,7 +11,7 @@ const Card = props => (
       <Logo source={props.logo} />
       <Wrapper>
         <Caption>{props.caption}</Caption>
-        <Subtitle>{props.subtitle}</Subtitle>
+        <Subtitle>{props.subtitle.toUpperCase()}</Subtitle>
       </Wrapper>
     </Content>
   </Container>
@@ -54,8 +54,7 @@ const Container = styled.View`
   width: 315px;
   height: 280px;
   border-radius: 14px;
-  margin-left: 20px;
-  margin-top: 20px;
+  margin: 20px 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 `;
 
