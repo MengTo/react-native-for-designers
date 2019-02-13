@@ -3,7 +3,7 @@
 ---
 [React Native](https://facebook.github.io/react-native/) is a popular Javascript framework that builds on top of React by using native components to create a real mobile app indistinguishable from one made using Xcode or Android Studio. The main difference with native development is that you get to use CSS, hot-reload, Javascript and other familiar techniques that the Web has grown over the past decades. Most importantly, you're building for both iOS and Android using the same codebase.
 
-## Course Downloads
+## Course Files
 1. [React Native for Designers](https://github.com/MengTo/react-native-for-designers/tree/fe5f60ae54a47684c94df89e7bf6ec0ba1d21eb9)
 2. [Styled Components](https://github.com/MengTo/react-native-for-designers/tree/22ae7d979e1103ad8989515143e90a884488f178)
 3. [Props and Icons](https://github.com/MengTo/react-native-for-designers/tree/4656c6507ae60ac56d9c9f7df1da0bc12ae6cbcb)
