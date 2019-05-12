@@ -6,17 +6,28 @@ import {
   Keyboard
 } from "react-native";
 import { BlurView } from "expo";
+import Success from "./Success";
+import Loading from "./Loading";
 
 class ModalLogin extends React.Component {
   state = {
     email: "",
     password: "",
     iconEmail: require("../assets/icon-email.png"),
-    IconPassword: require("../assets/icon-password.png")
+    IconPassword: require("../assets/icon-password.png"),
+    isSuccessful: false,
+    isLoading: false
   };
 
   handleLogin = () => {
     console.log(this.state.email, this.state.password);
+
+    this.setState({ isLoading: true });
+
+    setTimeout(() => {
+      this.setState({ isLoading: false });
+      this.setState({ isSuccessful: true });
+    }, 2000);
   };
 
   focusEmail = () => {
@@ -74,6 +85,8 @@ class ModalLogin extends React.Component {
             </Button>
           </TouchableOpacity>
         </Modal>
+        <Success isActive={this.state.isSuccessful} />
+        <Loading isActive={this.state.isLoading} />
       </Container>
     );
   }

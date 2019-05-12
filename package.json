@@ -10,6 +10,7 @@
     "apollo-boost": "^0.1.27",
     "expo": "^32.0.0",
     "graphql": "^14.1.1",
+    "lottie-react-native": "^2.6.1",
     "react": "16.5.0",
     "react-apollo": "^2.4.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
