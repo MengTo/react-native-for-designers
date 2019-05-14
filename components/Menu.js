@@ -4,6 +4,7 @@ import { Animated, TouchableOpacity, Dimensions } from "react-native";
 import { Icon } from "expo";
 import MenuItem from "./MenuItem";
 import { connect } from "react-redux";
+import { AsyncStorage } from "react-native";
 
 const screenWidth = Dimensions.get("window").width;
 var cardWidth = screenWidth;
@@ -20,6 +21,11 @@ function mapDispatchToProps(dispatch) {
     closeMenu: () =>
       dispatch({
         type: "CLOSE_MENU"
+      }),
+    updateName: name =>
+      dispatch({
+        type: "UPDATE_NAME",
+        name
       })
   };
 }
@@ -53,6 +59,14 @@ class Menu extends React.Component {
     }
   };
 
+  handleMenu = index => {
+    if (index === 3) {
+      this.props.closeMenu();
+      this.props.updateName();
+      AsyncStorage.clear();
+    }
+  };
+
   render() {
     return (
       <AnimatedContainer style={{ top: this.state.top }}>
@@ -77,12 +91,14 @@ class Menu extends React.Component {
         </TouchableOpacity>
         <Content>
           {items.map((item, index) => (
-            <MenuItem
+            <TouchableOpacity
               key={index}
-              icon={item.icon}
-              title={item.title}
-              text={item.text}
-            />
+              onPress={() => {
+                this.handleMenu(index);
+              }}
+            >
+              <MenuItem icon={item.icon} title={item.title} text={item.text} />
+            </TouchableOpacity>
           ))}
         </Content>
       </AnimatedContainer>
