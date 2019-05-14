@@ -122,7 +122,7 @@ class HomeScreen extends React.Component {
   };
 
   handleAvatar = () => {
-    if (this.props.name) {
+    if (this.props.name !== "Stranger") {
       this.props.openMenu();
     } else {
       this.props.openLogin();
