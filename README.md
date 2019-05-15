@@ -16,7 +16,6 @@
 10. [GraphQL with Contentful](https://github.com/MengTo/react-native-for-designers/tree/64f14b70c394e02807acce73ce6bc6b209dd0718)
 11. [HTML and Markdown](https://github.com/MengTo/react-native-for-designers/tree/457f2eccefacf06c016d65ff3fe42245f53cdfb5)
 12. [Adapting for iPad and Android](https://github.com/MengTo/react-native-for-designers/tree/82cf408881adc82c4a33491f7bd644d8e6652c81)
-Part 2
 13. [React Native Gestures](https://github.com/MengTo/react-native-for-designers/commit/b7c5242af86a6849a41d9f60d4e2631c7f840867)
 14. [Advanced Gestures](https://github.com/MengTo/react-native-for-designers/commit/60b25cd1cb9fb07caf915e6101c821a05f571053)
 15. [Looping the Cards](https://github.com/MengTo/react-native-for-designers/commit/46f65366d3f4176ac9b33f23d13716656f6d55ec)
