@@ -5,11 +5,19 @@ import {
   StatusBar,
   WebView,
   Linking,
-  ScrollView
+  ScrollView,
+  Dimensions
 } from "react-native";
 import { Icon } from "expo";
-import Markdown from "react-native-showdown";
 import { PlayIcon } from "../components/Icons";
+import MyWebView from 'react-native-webview-autoheight';
+import showdown from 'showdown';
+
+import defaultHTML from '../utils/defaultHTML';
+
+const { width } = Dimensions.get('window');
+
+const converter = new showdown.Converter();
 
 class SectionScreen extends React.Component {
   static navigationOptions = {
@@ -27,7 +35,7 @@ class SectionScreen extends React.Component {
   render() {
     const { navigation } = this.props;
     const section = navigation.getParam("section");
-
+    const markdownToHtml = converter.makeHtml(section.content);
     return (
       <ScrollView>
         <Container>
@@ -69,26 +77,30 @@ class SectionScreen extends React.Component {
             </CloseView>
           </TouchableOpacity>
           <Content>
-            {/* <WebView
-            source={{ html: section.content + htmlStyles }}
-            scalesPageToFit={false}
-            scrollEnabled={false}
-            ref="webview"
-            onNavigationStateChange={event => {
-              console.log(event);
-
-              if (event.url != "about:blank") {
-                this.refs.webview.stopLoading();
-                Linking.openURL(event.url);
-              }
-            }}
-          /> */}
-            <Markdown
-              body={section.content}
-              pureCSS={htmlStyles}
-              scalesPageToFit={false}
-              scrollEnabled={false}
-            />
+          <MyWebView
+          style={{
+            width: width - 40,
+            alignSelf: 'center',
+            marginBottom: 50,
+            marginTop: 20,
+          }}
+          source={{
+            html: defaultHTML
+              .replace('$title', '')
+              .replace('$body', markdownToHtml)
+              .replace('$pureCSS', htmlStyles),
+          }}
+          scalesPageToFit={false}
+          scrollEnabled={false}
+          startInLoadingState
+          ref="webview"
+          onNavigationStateChange={event => {
+            if (event.url.includes('http')) {
+              this.refs.webview.stopLoading();
+              Linking.openURL(event.url);
+            }
+          }}
+          />
           </Content>
         </Container>
       </ScrollView>
@@ -122,17 +134,17 @@ const htmlStyles = `
       font-weight: 600;
       margin-top: 50px;
     }
-  
+
     p {
       margin-top: 20px;
     }
-  
+
     a {
       color: #4775f2;
       font-weight: 600;
       text-decoration: none;
     }
-  
+
     strong {
       font-weight: 700;
     }
@@ -151,16 +163,13 @@ const htmlStyles = `
       border-radius: 10px;
       margin-top: 20px;
     }
-    
+
     code {
       color: white;
     }
 `;
 
-const Content = styled.View`
-  height: 1000px;
-  padding: 20px;
-`;
+const Content = styled.View``;
 
 const Container = styled.View`
   flex: 1;
