@@ -3,7 +3,7 @@
     "name": "Design+Code",
     "slug": "designcode-app",
     "privacy": "public",
-    "sdkVersion": "32.0.0",
+    "sdkVersion": "33.0.0",
     "platforms": [
       "ios",
       "android"
@@ -13,7 +13,7 @@
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "contain", 
+      "resizeMode": "contain",
       "backgroundColor": "#f0f3f5"
     },
     "updates": {

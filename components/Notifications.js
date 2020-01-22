@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   Dimensions
 } from "react-native";
-import { Icon } from "expo";
+import * as Icon from '@expo/vector-icons';
 import { connect } from "react-redux";
 
 let screenWidth = Dimensions.get("window").width;

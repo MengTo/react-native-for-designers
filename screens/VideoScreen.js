@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { Video, Icon } from "expo";
+import * as Icon from '@expo/vector-icons';
+import { Video } from 'expo-av';
 import { TouchableOpacity, Dimensions } from "react-native";
 
 let screenWidth = Dimensions.get("window").width;

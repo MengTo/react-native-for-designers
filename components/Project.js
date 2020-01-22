@@ -7,7 +7,8 @@ import {
   StatusBar,
   TouchableOpacity
 } from "react-native";
-import { Icon, LinearGradient } from "expo";
+import { LinearGradient } from 'expo-linear-gradient';
+import * as Icon from '@expo/vector-icons';
 import { connect } from "react-redux";
 
 function mapStateToProps(state) {
