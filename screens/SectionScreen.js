@@ -7,7 +7,7 @@ import {
   Linking,
   ScrollView
 } from "react-native";
-import { Icon } from "expo";
+import * as Icon from '@expo/vector-icons';
 import Markdown from "react-native-showdown";
 import { PlayIcon } from "../components/Icons";
 

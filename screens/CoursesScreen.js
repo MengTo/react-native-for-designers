@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { LinearGradient } from "expo";
+import { LinearGradient } from 'expo-linear-gradient';
 import CourseSection from "../components/CourseSection";
 import Courses from "../components/Courses";
 import { Dimensions } from "react-native";

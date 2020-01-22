@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Animated, TouchableOpacity, Dimensions } from "react-native";
-import { Icon } from "expo";
+import * as Icon from '@expo/vector-icons';
 import MenuItem from "./MenuItem";
 import { connect } from "react-redux";
 import { AsyncStorage } from "react-native";

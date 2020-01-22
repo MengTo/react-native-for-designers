@@ -5,7 +5,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard
 } from "react-native";
-import { BlurView } from "expo";
+import { BlurView } from 'expo-blur';
 import Success from "./Success";
 import Loading from "./Loading";
 import { Alert, Animated, Dimensions } from "react-native";
