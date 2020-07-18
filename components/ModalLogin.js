@@ -5,7 +5,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard
 } from "react-native";
-import { BlurView } from "expo";
+import { BlurView } from 'expo-blur';
 import Success from "./Success";
 import Loading from "./Loading";
 import { Alert, Animated, Dimensions } from "react-native";
@@ -60,12 +60,14 @@ class ModalLogin extends React.Component {
     if (this.props.action === "openLogin") {
       Animated.timing(this.state.top, {
         toValue: 0,
-        duration: 0
+        duration: 0,
+        useNativeDriver: false,
       }).start();
-      Animated.spring(this.state.scale, { toValue: 1 }).start();
+      Animated.spring(this.state.scale, { toValue: 1, useNativeDriver: true }).start();
       Animated.timing(this.state.translateY, {
         toValue: 0,
-        duration: 0
+        duration: 0,
+        useNativeDriver: true,
       }).start();
     }
 
@@ -73,14 +75,16 @@ class ModalLogin extends React.Component {
       setTimeout(() => {
         Animated.timing(this.state.top, {
           toValue: screenHeight,
-          duration: 0
+          duration: 0,
+          useNativeDriver: false,
         }).start();
-        Animated.spring(this.state.scale, { toValue: 1.3 }).start();
+        Animated.spring(this.state.scale, { toValue: 1.3, useNativeDriver: true,  }).start();
       }, 500);
 
       Animated.timing(this.state.translateY, {
         toValue: 1000,
-        duration: 500
+        duration: 500,
+        useNativeDriver: true,
       }).start();
     }
   }

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { LinearGradient } from "expo";
+import { LinearGradient } from "expo-linear-gradient";
 import CourseSection from "../components/CourseSection";
 import Courses from "../components/Courses";
 import { Dimensions } from "react-native";
@@ -8,7 +8,6 @@ import { Dimensions } from "react-native";
 let screenWidth = Dimensions.get("window").width;
 
 class CoursesScreen extends React.Component {
-  static navigationOptions = { title: "Courses", header: null };
 
   render() {
     return (
@@ -71,7 +70,7 @@ const Background = styled.Image`
   position: absolute;
   top: 0;
   left: 0;
-  width: ${screenWidth};
+  width: ${screenWidth}px;
   height: 460px;
 `;
 
@@ -130,7 +129,7 @@ const Name = styled.Text`
 `;
 
 const Subtitle = styled.Text`
-  font-size: 15;
+  font-size: 15px;
   text-transform: uppercase;
   font-weight: 600;
   color: #b8bece;

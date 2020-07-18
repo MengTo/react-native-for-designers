@@ -1,16 +1,13 @@
-import { createStackNavigator, createAppContainer } from "react-navigation";
-import HomeScreen from "../screens/HomeScreen";
-import SectionScreen from "../screens/SectionScreen";
+import { NavigationContainer } from '@react-navigation/native';
 import TabNavigator from "./TabNavigator";
+import React from "react";
 
-const AppNavigator = createStackNavigator(
-  {
-    Home: HomeScreen,
-    Section: SectionScreen
-  },
-  {
-    mode: "modal"
-  }
-);
+const AppNavigator = () => {
+  return (
+    <NavigationContainer>
+      <TabNavigator/>
+    </NavigationContainer>
+  );
+}
 
-export default createAppContainer(TabNavigator);
+export default AppNavigator;

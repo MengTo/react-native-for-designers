@@ -1,16 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { Video, Icon } from "expo";
+import { Video } from 'expo-av';
+import * as Icon from '@expo/vector-icons';
 import { TouchableOpacity, Dimensions } from "react-native";
 
 let screenWidth = Dimensions.get("window").width;
 let screenHeight = Dimensions.get("window").height;
 
 class VideoScreen extends React.Component {
-  static navigationOptions = {
-    header: null
-  };
-
   render() {
     return (
       <Container>

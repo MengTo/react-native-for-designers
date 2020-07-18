@@ -7,11 +7,11 @@ import {
   TouchableOpacity,
   Dimensions
 } from "react-native";
-import { Icon } from "expo";
+import * as Icon from '@expo/vector-icons';
 import { connect } from "react-redux";
 
 let screenWidth = Dimensions.get("window").width;
-var cardWith = screenWidth - 40;
+let cardWith = screenWidth - 40;
 if (screenWidth > 500) {
   cardWith = 460;
 }
@@ -41,34 +41,40 @@ class Notifications extends React.Component {
   };
 
   toggleNotif = () => {
-    if (this.props.action == "openNotif") {
+    if (this.props.action === "openNotif") {
       Animated.parallel([
         Animated.spring(this.state.translateY, {
-          toValue: 0
+          toValue: 0,
+          useNativeDriver: true,
         }),
         Animated.timing(this.state.opacity, {
           toValue: 1,
-          duration: 500
+          duration: 500,
+          useNativeDriver: true,
         }),
         Animated.timing(this.state.top, {
           toValue: 0,
-          duration: 0
+          duration: 0,
+          useNativeDriver: false,
         })
       ]).start();
     }
 
-    if (this.props.action == "closeNotif") {
+    if (this.props.action === "closeNotif") {
       Animated.parallel([
         Animated.spring(this.state.translateY, {
-          toValue: 30
+          toValue: 30,
+          useNativeDriver: true,
         }),
         Animated.timing(this.state.opacity, {
           toValue: 0,
-          duration: 500
+          duration: 500,
+          useNativeDriver: true,
         }),
         Animated.timing(this.state.top, {
           toValue: 3000,
-          duration: 0
+          duration: 0,
+          useNativeDriver: false,
         })
       ]).start();
     }
@@ -151,12 +157,12 @@ const CloseButton = styled.View`
 
 const Wrapper = styled.View`
   align-self: center;
-  width: ${cardWith};
+  width: ${cardWith}px;
   padding-top: 50px;
 `;
 
 const Subtitle = styled.Text`
-  font-size: 15;
+  font-size: 15px;
   text-transform: uppercase;
   font-weight: 600;
   color: #b8bece;
