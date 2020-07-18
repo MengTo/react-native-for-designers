@@ -3,18 +3,13 @@ import styled from "styled-components";
 import {
   TouchableOpacity,
   StatusBar,
-  WebView,
-  Linking,
   ScrollView
 } from "react-native";
-import { Icon } from "expo";
+import * as Icon from '@expo/vector-icons';
 import Markdown from "react-native-showdown";
 import { PlayIcon } from "../components/Icons";
 
 class SectionScreen extends React.Component {
-  static navigationOptions = {
-    header: null
-  };
 
   componentDidMount() {
     StatusBar.setBarStyle("light-content", true);
@@ -25,8 +20,8 @@ class SectionScreen extends React.Component {
   }
 
   render() {
-    const { navigation } = this.props;
-    const section = navigation.getParam("section");
+    const { navigation, route } = this.props;
+    const section = route.params?.section;
 
     return (
       <ScrollView>
@@ -84,7 +79,7 @@ class SectionScreen extends React.Component {
             }}
           /> */}
             <Markdown
-              body={section.content}
+              markdown={section.content}
               pureCSS={htmlStyles}
               scalesPageToFit={false}
               scrollEnabled={false}

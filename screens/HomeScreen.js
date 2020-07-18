@@ -10,14 +10,11 @@ import {
 } from "react-native";
 import styled from "styled-components";
 import Card from "../components/Card";
-import { Icon } from "expo";
-import { NotificationIcon } from "../components/Icons";
 import Logo from "../components/Logo";
 import Course from "../components/Course";
 import Menu from "../components/Menu";
 import { connect } from "react-redux";
 import Avatar from "../components/Avatar";
-import ApolloClient from "apollo-boost";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
 import ModalLogin from "../components/ModalLogin";
@@ -80,10 +77,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 class HomeScreen extends React.Component {
-  static navigationOptions = {
-    header: null
-  };
-
   state = {
     scale: new Animated.Value(1),
     opacity: new Animated.Value(1)
@@ -92,7 +85,7 @@ class HomeScreen extends React.Component {
   componentDidMount() {
     StatusBar.setBarStyle("dark-content", true);
 
-    if (Platform.OS == "android") StatusBar.setBarStyle("light-content", true);
+    if (Platform.OS === "android") StatusBar.setBarStyle("light-content", true);
   }
 
   componentDidUpdate() {
@@ -100,27 +93,31 @@ class HomeScreen extends React.Component {
   }
 
   toggleMenu = () => {
-    if (this.props.action == "openMenu") {
+    if (this.props.action === "openMenu") {
       Animated.timing(this.state.scale, {
         toValue: 0.9,
         duration: 300,
-        easing: Easing.in()
+        easing: Easing.in(),
+        useNativeDriver: true,
       }).start();
       Animated.spring(this.state.opacity, {
-        toValue: 0.5
+        toValue: 0.5,
+        useNativeDriver: true,
       }).start();
 
       StatusBar.setBarStyle("light-content", true);
     }
 
-    if (this.props.action == "closeMenu") {
+    if (this.props.action === "closeMenu") {
       Animated.timing(this.state.scale, {
         toValue: 1,
         duration: 300,
-        easing: Easing.in()
+        easing: Easing.in(),
+        useNativeDriver: true,
       }).start();
       Animated.spring(this.state.opacity, {
-        toValue: 1
+        toValue: 1,
+        useNativeDriver: true,
       }).start();
 
       StatusBar.setBarStyle("dark-content", true);

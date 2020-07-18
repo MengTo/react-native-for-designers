@@ -5,7 +5,7 @@ import { Dimensions } from "react-native";
 const screenWidth = Dimensions.get("window").width;
 
 function getCourseWidth(screenWidth) {
-  var cardWidth = screenWidth - 40;
+  let cardWidth = screenWidth - 40;
   if (screenWidth >= 768) {
     cardWidth = (screenWidth - 60) / 2;
   }

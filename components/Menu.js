@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { Animated, TouchableOpacity, Dimensions } from "react-native";
-import { Icon } from "expo";
+import * as Icon from '@expo/vector-icons';
 import MenuItem from "./MenuItem";
 import { connect } from "react-redux";
 import { AsyncStorage } from "react-native";
 
 const screenWidth = Dimensions.get("window").width;
-var cardWidth = screenWidth;
+let cardWidth = screenWidth;
 if (screenWidth > 500) {
   cardWidth = 500;
 }
@@ -51,15 +51,17 @@ class Menu extends React.Component {
   }
 
   toggleMenu = () => {
-    if (this.props.action == "openMenu") {
+    if (this.props.action === "openMenu") {
       Animated.spring(this.state.top, {
-        toValue: 54
+        toValue: 54,
+        useNativeDriver: false,
       }).start();
     }
 
-    if (this.props.action == "closeMenu") {
+    if (this.props.action === "closeMenu") {
       Animated.spring(this.state.top, {
-        toValue: screenHeight
+        toValue: screenHeight,
+        useNativeDriver: false,
       }).start();
     }
   };
@@ -150,7 +152,7 @@ const CloseView = styled.View`
 const Container = styled.View`
   position: absolute;
   background: white;
-  width: ${cardWidth};
+  width: ${cardWidth}px;
   align-self: center;
   height: 100%;
   z-index: 100;
@@ -168,7 +170,7 @@ const Cover = styled.View`
 `;
 
 const Content = styled.View`
-  height: ${screenHeight};
+  height: ${screenHeight}px;
   background: #f0f3f5;
   padding: 50px;
 `;

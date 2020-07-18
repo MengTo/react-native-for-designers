@@ -11,7 +11,7 @@ function mapStateToProps(state) {
 }
 
 function getNextIndex(index) {
-  var nextIndex = index + 1;
+  const nextIndex = index + 1;
   if (nextIndex > projects.length - 1) {
     return 0;
   }
@@ -19,10 +19,6 @@ function getNextIndex(index) {
 }
 
 class ProjectsScreen extends React.Component {
-  static navigationOptions = {
-    header: null
-  };
-
   state = {
     pan: new Animated.ValueXY(),
     scale: new Animated.Value(0.9),
@@ -33,43 +29,42 @@ class ProjectsScreen extends React.Component {
     opacity: new Animated.Value(0)
   };
 
-  componentWillMount() {
+  constructor(props) {
+    super(props);
     this._panResponder = PanResponder.create({
       onMoveShouldSetPanResponder: (event, gestureState) => {
         if (gestureState.dx === 0 && gestureState.dy === 0) {
           return false;
         } else {
-          if (this.props.action === "openCard") {
-            return false;
-          } else {
-            return true;
-          }
+          return this.props.action !== "openCard";
         }
       },
 
       onPanResponderGrant: () => {
-        Animated.spring(this.state.scale, { toValue: 1 }).start();
-        Animated.spring(this.state.translateY, { toValue: 0 }).start();
+        Animated.spring(this.state.scale, { toValue: 1, useNativeDriver: true,  }).start();
+        Animated.spring(this.state.translateY, { toValue: 0, useNativeDriver: true,  }).start();
 
-        Animated.spring(this.state.thirdScale, { toValue: 0.9 }).start();
-        Animated.spring(this.state.thirdTranslateY, { toValue: 44 }).start();
+        Animated.spring(this.state.thirdScale, { toValue: 0.9, useNativeDriver: true,  }).start();
+        Animated.spring(this.state.thirdTranslateY, { toValue: 44, useNativeDriver: true,  }).start();
 
-        Animated.timing(this.state.opacity, { toValue: 1 }).start();
+        Animated.timing(this.state.opacity, { toValue: 1, useNativeDriver: true,  }).start();
       },
 
       onPanResponderMove: Animated.event([
         null,
         { dx: this.state.pan.x, dy: this.state.pan.y }
-      ]),
+      ],
+        {useNativeDriver: false}),
 
       onPanResponderRelease: () => {
         const positionY = this.state.pan.y.__getValue();
-        Animated.timing(this.state.opacity, { toValue: 0 }).start();
+        Animated.timing(this.state.opacity, { toValue: 0, useNativeDriver: true,  }).start();
         // console.log(positionY);
 
         if (positionY > 200) {
           Animated.timing(this.state.pan, {
-            toValue: { x: 0, y: 1000 }
+            toValue: { x: 0, y: 1000 },
+            useNativeDriver: true,
           }).start(() => {
             this.state.pan.setValue({ x: 0, y: 0 });
             this.state.scale.setValue(0.9);
@@ -80,14 +75,15 @@ class ProjectsScreen extends React.Component {
           });
         } else {
           Animated.spring(this.state.pan, {
-            toValue: { x: 0, y: 0 }
+            toValue: { x: 0, y: 0 },
+            useNativeDriver: true,
           }).start();
 
-          Animated.spring(this.state.scale, { toValue: 0.9 }).start();
-          Animated.spring(this.state.translateY, { toValue: 44 }).start();
+          Animated.spring(this.state.scale, { toValue: 0.9, useNativeDriver: true,  }).start();
+          Animated.spring(this.state.translateY, { toValue: 44, useNativeDriver: true,  }).start();
 
-          Animated.spring(this.state.thirdScale, { toValue: 0.8 }).start();
-          Animated.spring(this.state.thirdTranslateY, { toValue: -50 }).start();
+          Animated.spring(this.state.thirdScale, { toValue: 0.8, useNativeDriver: true,  }).start();
+          Animated.spring(this.state.thirdTranslateY, { toValue: -50, useNativeDriver: true,  }).start();
         }
       }
     });

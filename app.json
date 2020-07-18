@@ -1,20 +1,14 @@
 {
   "expo": {
-    "name": "Design+Code",
-    "slug": "designcode-app",
-    "privacy": "public",
-    "sdkVersion": "32.0.0",
-    "platforms": [
-      "ios",
-      "android"
-    ],
+    "name": "rn-meng-course-updated",
+    "slug": "rn-meng-course-updated",
     "version": "1.0.0",
-    "orientation": "default",
+    "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "contain", 
-      "backgroundColor": "#f0f3f5"
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -23,11 +17,10 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "io.designcode.DesignCodeExpo"
+      "supportsTablet": true
     },
-    "android": {
-      "package": "io.designcode.DesignCodeExpo"
+    "web": {
+      "favicon": "./assets/favicon.png"
     }
   }
 }

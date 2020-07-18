@@ -7,7 +7,8 @@ import {
   StatusBar,
   TouchableOpacity
 } from "react-native";
-import { Icon, LinearGradient } from "expo";
+import * as Icon from '@expo/vector-icons';
+import { LinearGradient } from "expo-linear-gradient";
 import { connect } from "react-redux";
 
 function mapStateToProps(state) {
@@ -45,26 +46,28 @@ class Project extends React.Component {
   openCard = () => {
     if (!this.props.canOpen) return;
 
-    Animated.spring(this.state.cardWidth, { toValue: screenWidth }).start();
+    Animated.spring(this.state.cardWidth, { toValue: screenWidth, useNativeDriver: false}).start();
     Animated.spring(this.state.cardHeight, {
-      toValue: screenHeight - tabBarHeight
+      toValue: screenHeight - tabBarHeight,
+      useNativeDriver: false,
     }).start();
-    Animated.spring(this.state.titleTop, { toValue: 40 }).start();
-    Animated.timing(this.state.opacity, { toValue: 1 }).start();
-    Animated.spring(this.state.textHeight, { toValue: 1000 }).start();
+    Animated.spring(this.state.titleTop, { toValue: 40, useNativeDriver: false,  }).start();
+    Animated.timing(this.state.opacity, { toValue: 1, useNativeDriver: false,  }).start();
+    Animated.spring(this.state.textHeight, { toValue: 1000, useNativeDriver: false,  }).start();
 
     StatusBar.setHidden(true);
     this.props.openCard();
   };
 
   closeCard = () => {
-    Animated.spring(this.state.cardWidth, { toValue: 315 }).start();
+    Animated.spring(this.state.cardWidth, { toValue: 315, useNativeDriver: false,  }).start();
     Animated.spring(this.state.cardHeight, {
-      toValue: 460
+      toValue: 460,
+      useNativeDriver: false,
     }).start();
-    Animated.spring(this.state.titleTop, { toValue: 20 }).start();
-    Animated.timing(this.state.opacity, { toValue: 0 }).start();
-    Animated.spring(this.state.textHeight, { toValue: 100 }).start();
+    Animated.spring(this.state.titleTop, { toValue: 20, useNativeDriver: false,  }).start();
+    Animated.timing(this.state.opacity, { toValue: 0, useNativeDriver: false,  }).start();
+    Animated.spring(this.state.textHeight, { toValue: 100, useNativeDriver: false,  }).start();
 
     StatusBar.setHidden(false);
     this.props.closeCard();
