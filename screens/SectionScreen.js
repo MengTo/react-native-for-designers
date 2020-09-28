@@ -5,15 +5,15 @@ import {
   StatusBar,
   WebView,
   Linking,
-  ScrollView
+  ScrollView,
 } from "react-native";
-import { Icon } from "expo";
+import {Ionicons} from "@expo/vector-icons";
 import Markdown from "react-native-showdown";
-import { PlayIcon } from "../components/Icons";
+import {PlayIcon} from "../components/Icons";
 
 class SectionScreen extends React.Component {
   static navigationOptions = {
-    header: null
+    header: null,
   };
 
   componentDidMount() {
@@ -25,7 +25,7 @@ class SectionScreen extends React.Component {
   }
 
   render() {
-    const { navigation } = this.props;
+    const {navigation} = this.props;
     const section = navigation.getParam("section");
 
     return (
@@ -33,7 +33,7 @@ class SectionScreen extends React.Component {
         <Container>
           <StatusBar hidden />
           <Cover>
-            <Image source={{ uri: section.image.url }} />
+            <Image source={{uri: section.image.url}} />
             <PlayWrapper>
               <TouchableOpacity
                 underlayColor="transparent"
@@ -42,12 +42,12 @@ class SectionScreen extends React.Component {
                 }}
               >
                 <PlayView>
-                  <PlayIcon style={{ marginLeft: -10 }} />
+                  <PlayIcon style={{marginLeft: -10}} />
                 </PlayView>
               </TouchableOpacity>
             </PlayWrapper>
             <Wrapper>
-              <Logo source={{ uri: section.logo.url }} />
+              <Logo source={{uri: section.logo.url}} />
               <Subtitle>{section.subtitle}</Subtitle>
             </Wrapper>
             <Title>{section.title}</Title>
@@ -57,14 +57,14 @@ class SectionScreen extends React.Component {
             onPress={() => {
               this.props.navigation.goBack();
             }}
-            style={{ position: "absolute", top: 20, right: 20 }}
+            style={{position: "absolute", top: 20, right: 20}}
           >
             <CloseView>
-              <Icon.Ionicons
+              <Ionicons
                 name="ios-close"
                 size={36}
                 color="#4775f2"
-                style={{ marginTop: -2 }}
+                style={{marginTop: -2}}
               />
             </CloseView>
           </TouchableOpacity>
